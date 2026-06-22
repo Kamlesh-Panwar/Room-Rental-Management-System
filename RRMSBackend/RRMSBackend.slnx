@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="RRMSBackend.Application/RRMSBackend.Application.csproj" />
+  <Project Path="RRMSBackend.Domain/RRMSBackend.Domain.csproj" />
+  <Project Path="RRMSBackend.Infrastructure/RRMSBackend.Infrastructure.csproj" />
+  <Project Path="RRMSBackend/RRMSBackend.csproj" />
+</Solution>
