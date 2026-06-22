@@ -2,9 +2,8 @@
 
 namespace RRMSBackend.Domain.Entities;
 
-public class Room
+public class Room : BaseEntity
 {
-    public string Id { get; set; } = string.Empty;
     public string RoomNumber { get; set; } = string.Empty;
     public int FloorNumber { get; set; }
     public int Capacity { get; set; }
