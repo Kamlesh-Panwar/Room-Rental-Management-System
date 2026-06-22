@@ -2,7 +2,7 @@
 
 namespace RRMSBackend.Application.Interfaces;
 
-public interface IRoomRepository : IGenericRepository<Room>
+public interface ITenantRepository : IGenericRepository<Tenant>
 {
-
+    
 }

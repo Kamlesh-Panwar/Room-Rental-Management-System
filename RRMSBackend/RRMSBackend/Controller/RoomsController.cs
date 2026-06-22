@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RRMSBackend.Application.Rooms;
+using RRMSBackend.Application.Interfaces;
 using RRMSBackend.Domain.Entities;
 
 namespace RRMSBackend.Controllers;

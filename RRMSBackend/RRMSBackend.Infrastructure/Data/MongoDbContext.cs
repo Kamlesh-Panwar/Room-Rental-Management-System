@@ -24,22 +24,39 @@ public class MongoDbContext
         RegisterMappings();
     }
 
+    public IMongoDatabase Database => _database;
+
     public IMongoCollection<Room> Rooms => _database.GetCollection<Room>("Rooms");
 
     private static void RegisterMappings()
     {
+        if (!BsonClassMap.IsClassMapRegistered(typeof(BaseEntity)))
+        {
+            BsonClassMap.RegisterClassMap<BaseEntity>(cm =>
+            {
+                cm.MapIdProperty(c => c.Id)
+                  .SetIdGenerator(StringObjectIdGenerator.Instance)
+                  .SetSerializer(new StringSerializer(BsonType.ObjectId));
+            });
+        }
+
         if (!BsonClassMap.IsClassMapRegistered(typeof(Room)))
         {
             BsonClassMap.RegisterClassMap<Room>(cm =>
             {
                 cm.AutoMap();
-                cm.MapIdProperty(c => c.Id)
-                  .SetIdGenerator(StringObjectIdGenerator.Instance)
-                  .SetSerializer(new StringSerializer(BsonType.ObjectId));
-
                 cm.MapProperty(c => c.Status)
                   .SetSerializer(new EnumSerializer<RoomStatus>(BsonType.String));
             });
+        }
+
+        if (!BsonClassMap.IsClassMapRegistered(typeof(Tenant)))
+        {
+            BsonClassMap.RegisterClassMap<Tenant>(cm =>
+            {
+                cm.AutoMap();                  
+            });
+            
         }
     }
 }
