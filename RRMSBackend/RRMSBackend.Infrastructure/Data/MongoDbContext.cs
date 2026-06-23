@@ -45,8 +45,8 @@ public class MongoDbContext
             BsonClassMap.RegisterClassMap<Room>(cm =>
             {
                 cm.AutoMap();
-                cm.MapProperty(c => c.Status)
-                  .SetSerializer(new EnumSerializer<RoomStatus>(BsonType.String));
+                cm.MapProperty(c => c.Category).SetSerializer(new EnumSerializer<UnitCategory>(BsonType.String));
+                cm.MapProperty(c => c.Status).SetSerializer(new EnumSerializer<RoomStatus>(BsonType.String));
             });
         }
 
@@ -55,8 +55,27 @@ public class MongoDbContext
             BsonClassMap.RegisterClassMap<Tenant>(cm =>
             {
                 cm.AutoMap();                  
+            });            
+        }
+
+        if (!BsonClassMap.IsClassMapRegistered(typeof(LeaseAgreement)))
+        {
+            BsonClassMap.RegisterClassMap<LeaseAgreement>(cm =>
+            {
+                cm.AutoMap();
+                cm.MapProperty(c => c.SecurityDeposit)
+                  .SetSerializer(new MongoDB.Bson.Serialization.Serializers.DecimalSerializer(MongoDB.Bson.BsonType.Decimal128));
+                cm.MapProperty(c => c.RentPerMonth)
+                  .SetSerializer(new MongoDB.Bson.Serialization.Serializers.DecimalSerializer(MongoDB.Bson.BsonType.Decimal128));
             });
-            
+        }
+
+        if (!BsonClassMap.IsClassMapRegistered(typeof(Property)))
+        {
+            BsonClassMap.RegisterClassMap<Property>(cm => {
+                cm.AutoMap();
+                cm.MapProperty(c => c.Type).SetSerializer(new EnumSerializer<PropertyType>(BsonType.String));
+            });
         }
     }
 }

@@ -3,8 +3,12 @@
 namespace RRMSBackend.Domain.Enums;
 
 [JsonConverter(typeof(JsonStringEnumConverter))]
-public enum PropertyType
+public enum UnitCategory
 {
-    House,
-    Hostel
+    SingleRoom,
+    OneRK,
+    OneBHK,
+    TwoBHK,
+    ThreeBHK,
+    HostelRoom
 }
