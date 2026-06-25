@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\RRMSBackend.Application\RRMSBackend.Application.csproj" />
+    <ProjectReference Include="..\RRMSBackend.Application\RRMS.API.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>
