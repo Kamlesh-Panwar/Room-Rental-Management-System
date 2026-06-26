@@ -22,6 +22,7 @@ function PropertyCard({
             <small className="text-muted">
               {property.address}
             </small>
+            
           </div>
 
           <span
